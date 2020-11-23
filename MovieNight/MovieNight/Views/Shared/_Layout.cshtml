@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
+        <nav style="background: rgba(0, 0, 0, 0.3);" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">MovieNight</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -17,7 +17,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
+                   <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -36,7 +36,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer bg-dark text-muted">
+    <footer style="background: rgba(0, 0, 0, 0.3);" class=" footer text-muted">
         <div class="container">
             &copy; 2020 - MovieNight - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
