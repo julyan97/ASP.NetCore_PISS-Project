@@ -31,7 +31,7 @@ namespace MovieNight.Controllers
             return View();
         }
 
-        [HttpGet]
+        [HttpGet("Home/roomchat/{id}")]
         public IActionResult RoomChat(string id)
         {
 
