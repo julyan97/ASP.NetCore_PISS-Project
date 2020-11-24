@@ -2,6 +2,8 @@
     ViewData["Title"] = "Home Page";
 }
 <div class="text-center text-md-center" style="margin-top:20%">
-    <button type="button" class=" btn-lg btn-primary" style="margin-right:15%; background:#59b723; transform:scale(2 , 2);border:none" disabled>Create Lobby</button>
-    <button type="button" class=" btn-secondary btn-lg" style="margin-right:5%; transform:scale(2 ,2);border:none" disabled>Join Lobby</button>
+    <form asp-controller="Home" asp-action="CreateRoom"  method="post">
+        <button type="submit"  class=" btn-lg btn-primary" style="margin-right:15%; background:#59b723; transform:scale(2 , 2);border:none" >Create Lobby</button>
+        <button type="button" class=" btn-secondary btn-lg" style="margin-right:5%; transform:scale(2 ,2);border:none" >Join Lobby</button>
+    </form>
 </div>

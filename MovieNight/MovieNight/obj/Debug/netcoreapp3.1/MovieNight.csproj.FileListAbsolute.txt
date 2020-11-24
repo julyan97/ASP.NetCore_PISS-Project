@@ -1,8 +1,5 @@
 C:\Users\julyan97\Desktop\Piss-Project\MovieNight\MovieNight\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\julyan97\Desktop\Piss-Project\MovieNight\MovieNight\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\julyan97\Desktop\Piss-Project\MovieNight\MovieNight\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-C:\Users\julyan97\Desktop\Piss-Project\MovieNight\MovieNight\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
-C:\Users\julyan97\Desktop\Piss-Project\MovieNight\MovieNight\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json
 C:\Users\julyan97\Desktop\Piss-Project\MovieNight\MovieNight\bin\Debug\netcoreapp3.1\MovieNight.StaticWebAssets.xml
 C:\Users\julyan97\Desktop\Piss-Project\MovieNight\MovieNight\bin\Debug\netcoreapp3.1\MovieNight.exe
 C:\Users\julyan97\Desktop\Piss-Project\MovieNight\MovieNight\bin\Debug\netcoreapp3.1\MovieNight.deps.json
@@ -173,3 +170,4 @@ C:\Users\julyan97\Desktop\Piss-Project\MovieNight\MovieNight\obj\Debug\netcoreap
 C:\Users\julyan97\Desktop\Piss-Project\MovieNight\MovieNight\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\julyan97\Desktop\Piss-Project\MovieNight\MovieNight\bin\Debug\netcoreapp3.1\libman.json
 C:\Users\julyan97\Desktop\Piss-Project\MovieNight\MovieNight\obj\Debug\netcoreapp3.1\Razor\Views\Home\RoomChat.cshtml.g.cs
+C:\Users\julyan97\Desktop\Piss-Project\MovieNight\MovieNight\obj\Debug\netcoreapp3.1\scopedcss\bundle\MovieNight.styles.css

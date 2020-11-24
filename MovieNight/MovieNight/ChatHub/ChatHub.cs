@@ -12,6 +12,7 @@ namespace MovieNight.ChatHub
         {
             
             await Clients.All.SendAsync("ReceiveMessage", new { User = Context.User.Identity.Name, Text = message});
+            
         }
 
         public async Task AddToGroup(string room)
@@ -25,6 +26,13 @@ namespace MovieNight.ChatHub
         {
 
             await Clients.Groups(room).SendAsync("ReceiveMessage", new { User = Context.User.Identity.Name, Text = message });
+        }
+
+
+        public async Task SendMessageToUser(string user, string message)
+        {
+
+            await Clients.User(user).SendAsync("ReceiveMessage", new { User = Context.User.Identity.Name, Text = message });
         }
 
     }
