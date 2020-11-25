@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KYz0Az2tfV776XygEtb4Yp7WULxO/j7VqU9bWT50gyN3hoI1GzQX5ieHRt3L6molnVF/ASyl8uXLm9bTKk+EpQ==",
+  "dgSpecHash": "rfDzcYCVc0eTbeYL142l5TQ1dbY53AFVC6loGsgXHcYoeq9ayIKTcTQDBTYB28g78HRQBH8OI99+MRh10rEpYw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\julyan97\\Desktop\\Piss-Project\\MovieNight\\MovieNight\\MovieNight.csproj",
+  "projectFilePath": "C:\\Users\\julyan97\\source\\repos\\Piss-Project\\MovieNight\\MovieNight\\MovieNight.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\julyan97\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.10\\microsoft.aspnetcore.cryptography.internal.3.1.10.nupkg.sha512",
     "C:\\Users\\julyan97\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.10\\microsoft.aspnetcore.cryptography.keyderivation.3.1.10.nupkg.sha512",

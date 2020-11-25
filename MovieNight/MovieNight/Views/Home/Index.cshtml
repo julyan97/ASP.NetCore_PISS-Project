@@ -4,6 +4,29 @@
 <div class="text-center text-md-center" style="margin-top:20%">
     <form asp-controller="Home" asp-action="CreateRoom"  method="post">
         <button type="submit"  class=" btn-lg btn-primary" style="margin-right:15%; background:#59b723; transform:scale(2 , 2);border:none" >Create Lobby</button>
-        <button type="button" class=" btn-secondary btn-lg" style="margin-right:5%; transform:scale(2 ,2);border:none" >Join Lobby</button>
+        <button type="button" onclick="apii()" class=" btn-secondary btn-lg" style="margin-right:5%; transform:scale(2 ,2);border:none" >Join Lobby</button>
     </form>
 </div>
+
+<ul id="dblist"></ul>
+
+
+<script>
+
+    function apii() {
+        var ul = document.getElementById("dblist");
+        ul.innerHTML =''
+        fetch("api/all", {
+            method: "Get"
+        }).then(x => x.json())
+            .then(x => {
+                for (var i = 0; i < x.length; i++) {
+                    var li = document.createElement("li");
+                    li.textContent = x[i].userName;
+                    li.style = "color:white";
+                    ul.appendChild(li);
+                }
+            
+            })
+    }
+</script>

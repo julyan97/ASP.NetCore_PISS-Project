@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\julyan97\\Desktop\\Piss-Project\\MovieNight\\MovieNight\\MovieNight.csproj": {}
+    "C:\\Users\\julyan97\\source\\repos\\Piss-Project\\MovieNight\\MovieNight\\MovieNight.csproj": {}
   },
   "projects": {
-    "C:\\Users\\julyan97\\Desktop\\Piss-Project\\MovieNight\\MovieNight\\MovieNight.csproj": {
+    "C:\\Users\\julyan97\\source\\repos\\Piss-Project\\MovieNight\\MovieNight\\MovieNight.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\julyan97\\Desktop\\Piss-Project\\MovieNight\\MovieNight\\MovieNight.csproj",
+        "projectUniqueName": "C:\\Users\\julyan97\\source\\repos\\Piss-Project\\MovieNight\\MovieNight\\MovieNight.csproj",
         "projectName": "MovieNight",
-        "projectPath": "C:\\Users\\julyan97\\Desktop\\Piss-Project\\MovieNight\\MovieNight\\MovieNight.csproj",
+        "projectPath": "C:\\Users\\julyan97\\source\\repos\\Piss-Project\\MovieNight\\MovieNight\\MovieNight.csproj",
         "packagesPath": "C:\\Users\\julyan97\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\julyan97\\Desktop\\Piss-Project\\MovieNight\\MovieNight\\obj\\",
+        "outputPath": "C:\\Users\\julyan97\\source\\repos\\Piss-Project\\MovieNight\\MovieNight\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
