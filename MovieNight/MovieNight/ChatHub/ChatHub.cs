@@ -8,6 +8,13 @@ namespace MovieNight.ChatHub
 {
     public class ChatHub : Hub
     {
+        public async Task SendVideoInfiToAllMessage(string room, string message)
+        {
+
+            await Clients.Groups(room).SendAsync("ReceiveMessage",  new { Text = message, Button = "yes" });
+
+        }
+
         public async Task SendMessage(string room , string message)
         {
             
