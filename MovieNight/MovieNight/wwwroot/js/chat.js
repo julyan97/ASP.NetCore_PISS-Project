@@ -12,7 +12,13 @@ connection.on("ReceiveMessage", function (message) {
         var encodedMsg = message.user + " says " + msg;
         var li = document.createElement("li");
         li.textContent = encodedMsg;
-        document.getElementById("messagesList").appendChild(li);
+        document.getElementById("messagesList").innerHTML += ` 
+                                    <li class="chat-left">
+                                        <div class="chat-text">
+                                                    ${encodedMsg}
+                                        </div>
+                                        <div class="chat-hour">07:00 <span class="fa fa-check-circle"></span></div>
+                                    </li>`
     }
     else {
         var li = "HI"
