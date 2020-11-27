@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using MovieNight.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,8 @@ namespace MovieNight.ChatHub
 {
     public class ChatHub : Hub
     {
+
+        public HashSet<string> Users { get; set; } 
         public async Task SendVideoInfiToAllMessage(string room, string message)
         {
 
@@ -22,11 +25,12 @@ namespace MovieNight.ChatHub
             
         }
 
-        public async Task AddToGroup(string room)
+        public async Task AddToGroup(string room )
         {
+
             await Groups.AddToGroupAsync(Context.ConnectionId, room);
 
-            await Clients.Group(room).SendAsync("ReceiveMessage", $"{Context.User.Identity.Name} has joined the group {room}.");
+            await Clients.Group(room).SendAsync("ReceiveMessage", new { User = Context.User.Identity.Name/*, Text = $"{Context.User.Identity.Name} has joined the group ."*/ });
         }
 
         public async Task SendMessageToGroup(string room, string message)

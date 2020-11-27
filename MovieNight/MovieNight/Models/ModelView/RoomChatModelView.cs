@@ -8,6 +8,6 @@ namespace MovieNight.Models.ModelView
     public class RoomChatModelView
     {
         public string Id { get; set; }
-        public List<int> List { get; set; } = new List<int>() { 1, 2, 3, 4, 5, 6 };
+        public List<string> Users { get; set; }
     }
 }

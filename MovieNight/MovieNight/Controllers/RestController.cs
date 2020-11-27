@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MovieNight.Data;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace MovieNight.Controllers
     public class RestController : ControllerBase
     {
         public ApplicationDbContext db { get; set; }
-        
+
         public RestController(ApplicationDbContext db)
         {
             this.db = db;
@@ -26,12 +27,18 @@ namespace MovieNight.Controllers
         }
 
         // GET: api/<RestController>
-        [HttpGet("all")]
-        public ActionResult Get()
+        [HttpGet("all/{id}")]
+        public ActionResult Get(string id)
         {
-            var users = db.Users.ToList()
-                .Select(x=>new UserViewModel(){ UserName = x.UserName});
-            
+            var room = db.ChatRooms.Include(x => x.UserChatRooms) 
+                .ThenInclude(x => x.User)
+                .FirstOrDefault(x => x.Id == id);
+
+            var users = db.ChatRooms.Include(x => x.UserChatRooms).ThenInclude(x => x.User)
+       .FirstOrDefault(x => x.Id == id).UserChatRooms
+       .Select(x => x.User.UserName)
+       .ToList();
+
             return Ok(users);
         }
 

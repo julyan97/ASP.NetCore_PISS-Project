@@ -1,11 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<div class="text-center text-md-center" style="margin-top:20%">
-    <form asp-controller="Home" asp-action="CreateRoom"  method="post">
-        <button type="submit"  class=" btn-lg btn-primary" style="margin-right:15%; background:#59b723; transform:scale(2 , 2);border:none" >Create Lobby</button>
-        <button type="button" onclick="apii()" class=" btn-secondary btn-lg" style="margin-right:5%; transform:scale(2 ,2);border:none" >Join Lobby</button>
-    </form>
+<div class="container">
+    <div class="text-center text-md-center" style="margin-top:20%">
+        <form asp-controller="Home" asp-action="CreateRoom" method="post">
+            <button type="submit" class=" btn-lg btn-primary" style="margin-right:15%; background:#59b723; transform:scale(2 , 2);border:none">Create Lobby</button>
+            <button type="button" onclick="apii()" class=" btn-secondary btn-lg" style="margin-right:5%; transform:scale(2 ,2);border:none">Join Lobby</button>
+        </form>
+    </div>
 </div>
 
 <ul id="dblist"></ul>
