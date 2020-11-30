@@ -1,6 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+  
 }
+@using MovieNight.Models.ModelView;
+
+@model IndexViewModel 
+
 <div class="container">
     <div class="text-center text-md-center" style="margin-top:20%">
         <form asp-controller="Home" asp-action="CreateRoom" method="post">
@@ -9,15 +14,18 @@
         </form>
     </div>
     
-<div style="margin-top:10%">
+    <div style="margin-top:10%">
+        @foreach (var c in Model.ChatRooms)
+        {
+            <div class="text-center d-inline-block" style="border-radius:15px;background:rgba(0, 0, 0, 0.5); width:15%; min-height:150px;">
+                <p class="text-white" style="margin-top:6%">IDS: @c.Id</p>
+                <p class="text-white">Name: name</p>
+                <button class="text-white" style="border-radius:5px; background:gray; border:none; width:50%;margin-bottom:10px">Join</button>
+            </div>
+        }
 
-    <div class="text-center d-inline-block" style="border-radius:15px;background:rgba(0, 0, 0, 0.5); width:15%; height:150px;">
-        <p class="text-white" style="margin-top:6%">IDS</p>
-        <p class="text-white">Name</p>
-        <button class="text-white" style="border-radius:5px; background:gray; border:none; width:50%">Join</button>
+
     </div>
-
-</div>
 
 </div>
 
