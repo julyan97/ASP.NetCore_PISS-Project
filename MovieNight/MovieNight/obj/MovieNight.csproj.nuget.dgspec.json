@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\julyan97\\Desktop\\Piss-Project\\MovieNight\\MovieNight\\MovieNight.csproj": {}
+    "C:\\Users\\julyan97\\source\\repos\\Piss-Project\\PISS-Project\\MovieNight\\MovieNight\\MovieNight.csproj": {}
   },
   "projects": {
-    "C:\\Users\\julyan97\\Desktop\\Piss-Project\\MovieNight\\MovieNight\\MovieNight.csproj": {
+    "C:\\Users\\julyan97\\source\\repos\\Piss-Project\\PISS-Project\\MovieNight\\MovieNight\\MovieNight.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\julyan97\\Desktop\\Piss-Project\\MovieNight\\MovieNight\\MovieNight.csproj",
+        "projectUniqueName": "C:\\Users\\julyan97\\source\\repos\\Piss-Project\\PISS-Project\\MovieNight\\MovieNight\\MovieNight.csproj",
         "projectName": "MovieNight",
-        "projectPath": "C:\\Users\\julyan97\\Desktop\\Piss-Project\\MovieNight\\MovieNight\\MovieNight.csproj",
+        "projectPath": "C:\\Users\\julyan97\\source\\repos\\Piss-Project\\PISS-Project\\MovieNight\\MovieNight\\MovieNight.csproj",
         "packagesPath": "C:\\Users\\julyan97\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\julyan97\\Desktop\\Piss-Project\\MovieNight\\MovieNight\\obj\\",
+        "outputPath": "C:\\Users\\julyan97\\source\\repos\\Piss-Project\\PISS-Project\\MovieNight\\MovieNight\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -30,6 +30,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -41,6 +42,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
@@ -48,19 +50,25 @@
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[3.1.9, )"
+              "version": "[3.1.10, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[3.1.9, )"
+              "version": "[3.1.10, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.1.9, )"
+              "version": "[3.1.10, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.9, )"
+              "version": "[3.1.10, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.4, )"
             }
           },
           "imports": [
@@ -81,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
