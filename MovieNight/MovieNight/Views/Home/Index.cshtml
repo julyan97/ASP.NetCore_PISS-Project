@@ -6,6 +6,8 @@
 
 @model IndexViewModel 
 
+   
+
 <div class="container">
     <div class="text-center text-md-center" style="margin-top:20%">
         <form asp-controller="Home" asp-action="CreateRoom" method="post"  class="text-center">
@@ -17,9 +19,9 @@
     <div style="margin-top:10%;display:none" id="lobbies"  class="text-center">
         @foreach (var c in Model.ChatRooms)
         {
-            <div class="text-center d-inline-block" style="border-radius:15px;background:rgba(0, 0, 0, 0.5); width:15%; min-height:150px;">
+            <div class="text-center d-inline-block" style="border-radius:15px;background:rgba(0, 0, 0, 0.5); min-width:15%; min-height:150px;">
                 <p class="text-white" style="margin-top:6%">IDS: @c.Id</p>
-                <p class="text-white">Name: name</p>
+                <p class="text-white">Name: @c.OwnerName</p>
                 <form action="Home/JoinRoom/@c.Id" method="get">
                 <button type="submit" name="Id" class="text-white" style="border-radius:5px; background:gray; border:none; width:50%;margin-bottom:10px">Join</button>
                 </form>
