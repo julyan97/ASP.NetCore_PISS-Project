@@ -100,6 +100,7 @@ namespace MovieNight.Controllers
 
                 mapper.User = user;
                 mapper.ChatRoom = new ChatRoom();
+                mapper.ChatRoom.Owner = user.UserName;
                 //---
 
                 user.UserChatRooms.Add(mapper);
