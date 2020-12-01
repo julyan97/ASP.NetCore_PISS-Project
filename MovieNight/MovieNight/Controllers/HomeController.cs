@@ -61,6 +61,7 @@ namespace MovieNight.Controllers
                 UserChatRooms mapper = new UserChatRooms();
                 mapper.User = db.Users.FirstOrDefault(x => x.UserName == User.Identity.Name);
                 mapper.ChatRoom = room;
+
                 //---
 
                 room.UserChatRooms.Add(mapper);
@@ -90,6 +91,7 @@ namespace MovieNight.Controllers
         public IActionResult CreateRoom()
         {
             UserChatRooms mapper = new UserChatRooms();
+            ChatRoom mapChatRoom = new ChatRoom();
             using (db)
             {
                 var user = db.Users.Include(x => x.UserChatRooms)
@@ -99,8 +101,10 @@ namespace MovieNight.Controllers
                 //mapping many to many
 
                 mapper.User = user;
-                mapper.ChatRoom = new ChatRoom();
                 //---
+                mapChatRoom.OwnerName = user.UserName;
+                mapper.ChatRoom = mapChatRoom;
+
 
                 user.UserChatRooms.Add(mapper);
                 db.SaveChanges();

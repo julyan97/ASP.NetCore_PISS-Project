@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MovieNight.Data;
 
-namespace MovieNight.Data.Migrations
+namespace MovieNight.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201124084021_addedrooms")]
-    partial class addedrooms
+    [Migration("20201201122829_AddOwner")]
+    partial class AddOwner
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -161,6 +161,9 @@ namespace MovieNight.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("OwnerName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

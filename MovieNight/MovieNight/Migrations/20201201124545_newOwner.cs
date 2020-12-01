@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MovieNight.Data.Migrations
+namespace MovieNight.Migrations
 {
-    public partial class enumerubletolist : Migration
+    public partial class newOwner : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

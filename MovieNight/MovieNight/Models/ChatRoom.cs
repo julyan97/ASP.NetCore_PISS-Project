@@ -10,6 +10,7 @@ namespace MovieNight.Models
     public class ChatRoom : BaseData
     {
         public List<UserChatRooms> UserChatRooms { get; set; }
+        public string OwnerName { get; set; }
     }
 
 

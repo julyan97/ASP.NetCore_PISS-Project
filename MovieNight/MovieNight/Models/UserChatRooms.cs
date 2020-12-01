@@ -11,5 +11,6 @@ namespace MovieNight.Models
         public User User { get; set; }
         public string ChatRoomId { get; set; }
         public ChatRoom ChatRoom { get; set; }
+
     }
 }
