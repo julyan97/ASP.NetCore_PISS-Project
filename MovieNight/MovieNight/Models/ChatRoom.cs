@@ -11,4 +11,6 @@ namespace MovieNight.Models
     {
         public List<UserChatRooms> UserChatRooms { get; set; }
     }
+
+
 }

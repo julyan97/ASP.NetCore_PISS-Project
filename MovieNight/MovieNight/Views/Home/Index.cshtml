@@ -20,7 +20,9 @@
             <div class="text-center d-inline-block" style="border-radius:15px;background:rgba(0, 0, 0, 0.5); width:15%; min-height:150px;">
                 <p class="text-white" style="margin-top:6%">IDS: @c.Id</p>
                 <p class="text-white">Name: name</p>
-                <button class="text-white" style="border-radius:5px; background:gray; border:none; width:50%;margin-bottom:10px">Join</button>
+                <form asp-route="Home/JoinRoom/@c.Id" method="get">
+                <button type="submit" name="Id" class="text-white" style="border-radius:5px; background:gray; border:none; width:50%;margin-bottom:10px">Join</button>
+                </form>
             </div>
         }
 
