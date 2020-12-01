@@ -62,6 +62,8 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
     background: url(../img/indexBackground2.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     /* Full height */
     height: 100%;
     /* Center and scale the image nicely */

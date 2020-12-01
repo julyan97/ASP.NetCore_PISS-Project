@@ -26,7 +26,7 @@ namespace MovieNight.Controllers
 
         public IActionResult Index(string id)
         {
-            
+
             /// 1
             var model = new IndexViewModel();
             var list = db.ChatRooms.ToList();
@@ -35,7 +35,7 @@ namespace MovieNight.Controllers
             ViewBag.list = list;
             /// 3
             ViewData["list"] = list;
-            
+
 
             return View(model);
         }
@@ -50,39 +50,46 @@ namespace MovieNight.Controllers
         [HttpGet("Home/roomchat/{id}")]
         public IActionResult RoomChat(string id)
         {
-            var room = db.ChatRooms.Include(x => x.UserChatRooms)
-   .ThenInclude(x => x.User)
-   .FirstOrDefault(x => x.Id == id);
-
-            if (!room.UserChatRooms.Any(x => x.User.UserName == User.Identity.Name))
+            try
             {
+                var room = db.ChatRooms.Include(x => x.UserChatRooms)
+       .ThenInclude(x => x.User)
+       .FirstOrDefault(x => x.Id == id);
 
-                //mapping many to many
-                UserChatRooms mapper = new UserChatRooms();
-                mapper.User = db.Users.FirstOrDefault(x => x.UserName == User.Identity.Name);
-                mapper.ChatRoom = room;
-                //---
+                if (!room.UserChatRooms.Any(x => x.User.UserName == User.Identity.Name))
+                {
 
-                room.UserChatRooms.Add(mapper);
-                db.SaveChanges();
-              
+                    //mapping many to many
+                    UserChatRooms mapper = new UserChatRooms();
+                    mapper.User = db.Users.FirstOrDefault(x => x.UserName == User.Identity.Name);
+                    mapper.ChatRoom = room;
+                    //---
+
+                    room.UserChatRooms.Add(mapper);
+                    db.SaveChanges();
+
+                }
+                var users = db.ChatRooms.Include(x => x.UserChatRooms).ThenInclude(x => x.User)
+                       .FirstOrDefault(x => x.Id == id).UserChatRooms
+                       .Select(x => x.User.UserName)
+                       .ToList();
+
+                RoomChatModelView model = new RoomChatModelView();
+                model.Id = id;
+                model.Users = users;
+                return View(model);
             }
-            var users = db.ChatRooms.Include(x => x.UserChatRooms).ThenInclude(x => x.User)
-                   .FirstOrDefault(x => x.Id == id).UserChatRooms
-                   .Select(x => x.User.UserName)
-                   .ToList();
-
-            RoomChatModelView model = new RoomChatModelView();
-            model.Id = id;
-            model.Users = users;
-            return View(model);
+            catch
+            {
+                return RedirectToAction("Index");
+            }
 
         }
 
         [HttpGet]
         public IActionResult JoinRoom(string Id)
         {
-          
+
             return RedirectToAction("RoomChat", new { Id = Id });
         }
 
@@ -100,6 +107,7 @@ namespace MovieNight.Controllers
 
                 mapper.User = user;
                 mapper.ChatRoom = new ChatRoom();
+                mapper.ChatRoom.Owner = user.UserName;
                 //---
 
                 user.UserChatRooms.Add(mapper);
@@ -109,6 +117,18 @@ namespace MovieNight.Controllers
             return RedirectToAction("RoomChat", new { Id = mapper.ChatRoomId });
         }
 
+        [HttpGet]
+        public IActionResult DeleteRoom(string id)
+        {
+            var room = db.ChatRooms.Include(x => x.UserChatRooms)
+                                    .ThenInclude(x => x.User)
+                                    .FirstOrDefault(x => x.Id == id);
+
+            db.ChatRooms.Remove(room);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
