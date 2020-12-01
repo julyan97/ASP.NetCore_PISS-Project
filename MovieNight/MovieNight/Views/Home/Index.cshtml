@@ -8,19 +8,19 @@
 
 <div class="container">
     <div class="text-center text-md-center" style="margin-top:20%">
-        <form asp-controller="Home" asp-action="CreateRoom" method="post">
+        <form asp-controller="Home" asp-action="CreateRoom" method="post"  class="text-center">
             <button type="submit" class=" btn-lg btn-primary" style="margin-right:15%; background:#59b723; transform:scale(2 , 2);border:none">Create Lobby</button>
-            <button type="button" onclick="apii()" class=" btn-secondary btn-lg" style="margin-right:5%; transform:scale(2 ,2);border:none">Join Lobby</button>
+            <button type="button" onclick="appear()" class=" btn-secondary btn-lg" style="transform:scale(2 ,2);border:none">Join Lobby</button>
         </form>
     </div>
     
-    <div style="margin-top:10%">
+    <div style="margin-top:10%;display:none" id="lobbies"  class="text-center">
         @foreach (var c in Model.ChatRooms)
         {
             <div class="text-center d-inline-block" style="border-radius:15px;background:rgba(0, 0, 0, 0.5); width:15%; min-height:150px;">
                 <p class="text-white" style="margin-top:6%">IDS: @c.Id</p>
                 <p class="text-white">Name: name</p>
-                <form asp-route="Home/JoinRoom/@c.Id" method="get">
+                <form action="Home/JoinRoom/@c.Id" method="get">
                 <button type="submit" name="Id" class="text-white" style="border-radius:5px; background:gray; border:none; width:50%;margin-bottom:10px">Join</button>
                 </form>
             </div>
@@ -37,6 +37,15 @@
 
 
 <script>
+
+    function appear() {
+        var el = document.getElementById('lobbies');
+        if (el.style.display == "none")
+            el.style.display = "inline-block";
+        else 
+            el.style.display = "none";
+
+    }
 
     function apii() {
         var ul = document.getElementById("dblist");

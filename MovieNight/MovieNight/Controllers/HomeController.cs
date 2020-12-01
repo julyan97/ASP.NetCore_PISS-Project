@@ -65,9 +65,6 @@ namespace MovieNight.Controllers
 
                 room.UserChatRooms.Add(mapper);
                 db.SaveChanges();
-
-
-
               
             }
             var users = db.ChatRooms.Include(x => x.UserChatRooms).ThenInclude(x => x.User)
@@ -82,33 +79,11 @@ namespace MovieNight.Controllers
 
         }
 
-        [HttpPost]
-        public IActionResult JoinRoom(string roomId)
+        [HttpGet]
+        public IActionResult JoinRoom(string Id)
         {
-           UserChatRooms mapper = new UserChatRooms();
-            using (db)
-            {
-                
-                var room = db.ChatRooms.Include(x => x.UserChatRooms)
-                .ThenInclude(x => x.User)
-                .FirstOrDefault(x => x.Id == roomId);
-
-                var user = db.Users.Include(x => x.UserChatRooms)
-                   .ThenInclude(x => x.ChatRoom)
-                   .FirstOrDefault(x => x.UserName == HttpContext.User.Identity.Name);
-
-                //mapping many to many
-
-                
-                
-                mapper.ChatRoom = room;
-                mapper.User = user;
-                //---
-
-                room.UserChatRooms.Add(mapper);
-                db.SaveChanges();
-            }
-            return RedirectToAction("RoomChat", new { Id = mapper.ChatRoomId });
+          
+            return RedirectToAction("RoomChat", new { Id = Id });
         }
 
         [HttpPost]
