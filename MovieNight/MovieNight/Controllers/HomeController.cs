@@ -24,17 +24,28 @@ namespace MovieNight.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
         public IActionResult Index(string id)
         {
-
             /// 1
             var model = new IndexViewModel();
-            var list = db.ChatRooms.ToList();
-            model.ChatRooms = list;
+            if(id == null)
+            {
+                var list = db.ChatRooms.ToList();
+                model.ChatRooms = list;
+            }
+            else
+            {
+                var list = db.ChatRooms.Where(x => x.Owner == id).ToList();
+                model.ChatRooms = list;
+            }
+            
             /// 2
-            ViewBag.list = list;
+           // ViewBag.list = list;
             /// 3
-            ViewData["list"] = list;
+           // ViewData["list"] = list;
+
+            
 
 
             return View(model);

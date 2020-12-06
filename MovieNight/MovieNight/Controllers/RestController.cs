@@ -66,5 +66,11 @@ namespace MovieNight.Controllers
         public void Delete(int id)
         {
         }
+
+        public ActionResult Search(string userName)
+        {
+            var rooms = db.ChatRooms.Where(x => x.Owner == userName).ToList();
+            return Ok(rooms);
+        }
     }
 }

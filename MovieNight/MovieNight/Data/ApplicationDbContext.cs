@@ -9,8 +9,10 @@ namespace MovieNight.Data
 {
     public class ApplicationDbContext : IdentityDbContext<User>
     {
-
+        public DbSet<Movie> Movies { get; set; }
         public DbSet<ChatRoom> ChatRooms { get; set; }
+
+        
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
