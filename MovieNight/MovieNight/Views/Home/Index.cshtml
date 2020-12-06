@@ -7,14 +7,22 @@
 @model IndexViewModel 
 
 <div class="container">
-    <div class="text-center text-md-center" style="margin-top:20%">
-        <form asp-controller="Home" asp-action="CreateRoom" method="post"  class="text-center">
+
+   
+    <div class="text-center text-md-center" style="margin-top:10%">
+        <button type="button" onclick="appearButtons()" class=" btn-secondary btn-lg" style="margin: 2.5%; background:#0db1fa; border: none; min-width: 30%; min-height: 3.5em; font-size: 30px; border-radius: 30px">Contribute to Library</button>
+        <form id="uploadMovies" class="text-center" style="display:none">
+            <button type="button" class="btn-lg btn-primary" style="background-color:#0db1fc; border:none; min-width:10%; min-height:2.0em; font-size:20px; border-radius:20px;" >Upload</button>
+            <button type="button" class="btn-lg btn-primary" style="background-color:#0db1fc; border:none; min-width:10%; min-height:2.0em; font-size:20px; border-radius:20px;" >Submit</button>
+        </form>
+        <form asp-controller="Home" asp-action="CreateRoom" method="post" class="text-center">
             <button type="submit" class=" btn-lg btn-primary" style="margin:2.5%; background:#59b723 ;border:none ; min-width:30%;min-height:3.5em;font-size:30px;border-radius:30px">Create Lobby</button>
-            <button type="button" onclick="appear()" class=" btn-secondary btn-lg" style="margin: 2.5%; border: none; min-width: 30%; min-height: 3.5em; font-size: 30px; border-radius: 30px">Join Lobby</button>
+            <button type="button" onclick="appearLobbies()" class=" btn-secondary btn-lg" style="margin: 2.5%; border: none; min-width: 30%; min-height: 3.5em; font-size: 30px; border-radius: 30px">Join Lobby</button>
+
         </form>
     </div>
-    
-    <div  id="lobbies"  class="text-center" style="margin-top:10%;display:none">
+
+    <div id="lobbies" class="text-center" style="margin-top:10%;display:none">
         @foreach (var c in Model.ChatRooms)
         {
             <div class="text-center d-inline-block" style="margin:10px;border-radius:15px;background:rgba(0, 0, 0, 0.5); min-width:15%;padding:5px; min-height:150px;">
@@ -45,7 +53,18 @@
 
 <script>
 
-    function appear() {
+    function appearButtons() {
+        var el = document.getElementById('uploadMovies')
+        if (el.style.display == "none")
+        {
+            el.style.display = "block";
+        }
+
+        else
+            el.style.display = "none"
+    }
+    
+    function appearLobbies() {
         var el = document.getElementById('lobbies');
         if (el.style.display == "none")
             el.style.display = "block";

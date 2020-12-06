@@ -8841,25 +8841,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\julyan97\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Dimo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\julyan97\\source\\repos\\Piss-Project\\PISS-Project\\MovieNight\\MovieNight\\MovieNight.csproj",
+      "projectUniqueName": "D:\\Piss-project\\PISS-Project\\MovieNight\\MovieNight\\MovieNight.csproj",
       "projectName": "MovieNight",
-      "projectPath": "C:\\Users\\julyan97\\source\\repos\\Piss-Project\\PISS-Project\\MovieNight\\MovieNight\\MovieNight.csproj",
-      "packagesPath": "C:\\Users\\julyan97\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\julyan97\\source\\repos\\Piss-Project\\PISS-Project\\MovieNight\\MovieNight\\obj\\",
+      "projectPath": "D:\\Piss-project\\PISS-Project\\MovieNight\\MovieNight\\MovieNight.csproj",
+      "packagesPath": "C:\\Users\\Dimo\\.nuget\\packages\\",
+      "outputPath": "D:\\Piss-project\\PISS-Project\\MovieNight\\MovieNight\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\julyan97\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\Dimo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -8870,7 +8865,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -8882,7 +8876,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",
@@ -8929,7 +8922,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
