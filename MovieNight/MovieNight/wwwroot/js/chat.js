@@ -95,11 +95,6 @@ document.getElementById("sendButton").addEventListener("click", function (event)
 
 
 //------------------------------------------------------- VIDEO
-connection.on("VideoInfo", function (message) {
-    
-    var li = "HI"
-    document.getElementById("video").appendChild(li);
-});
 
 document.getElementById("videob").addEventListener("click", function (event) {
 
@@ -110,4 +105,74 @@ document.getElementById("videob").addEventListener("click", function (event) {
         return console.error(err.toString());
     });
     event.preventDefault();
+});
+
+
+connection.on("VideoInfo", function (message) {
+    
+    var li = "HI"
+    document.getElementById("video").appendChild(li);
+});
+
+
+
+//--------------------------------------------------------Button pause/play
+
+
+document.getElementById("pausePlay").addEventListener("click", function (event) {
+
+    connection.invoke("PlayPause", room).catch(function (err) {
+        return console.error(err.toString());
+    });
+    event.preventDefault();
+});
+
+
+connection.on("PlayPauseJs", function () {
+    
+        var myVideo = document.getElementById('displayvid');
+    if (myVideo.paused)
+            myVideo.play();
+        else
+            myVideo.pause();
+});
+
+
+
+//-----------------------------------------------------------------------LoadVideo
+
+
+function loadVideo(name) {
+
+    connection.invoke("LoadVideo", room,name).catch(function (err) {
+        return console.error(err.toString());
+    });
+    event.preventDefault();
+}
+
+
+connection.on("LoadVideoJs", function (name) {
+    var vid = document.getElementById('displayvid');
+    vid.setAttribute("src", name);
+
+});
+
+//------------------------------------------------------------------------SetTime
+document.getElementById("changeTime").addEventListener("click", function (event) {
+
+    var time = document.getElementById("time").value;
+
+    connection.invoke("ChangeTime", room, time).catch(function (err) {
+        return console.error(err.toString());
+    });
+    event.preventDefault();
+});
+
+
+connection.on("ChangeTimeJs", function (time) {
+    
+    var vid = document.getElementById('displayvid');
+    var oldsrc = vid.getAttribute("src").split("#t=")[0];
+    var newsrc = oldsrc + `#t=${time}`;
+    vid.setAttribute("src", newsrc);
 });

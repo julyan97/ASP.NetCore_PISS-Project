@@ -1,7 +1,9 @@
 ﻿
 @model MovieNight.Models.ModelView.RoomChatModelView
-
-<div class="text-center">
+@{
+    ViewData["Title"] = "ChatRoom";
+}
+<div class="text-center h-100">
 
     <div class="row text-white align-text-top">
         <div class="col-lg-12">
@@ -18,7 +20,7 @@
         <input class="d-inline-block" type="button" id="videob" value="Start Watching" />
     </div>
 
-    <div>
+    <div class="h-100">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <div class="container text-white d-inline-block align-text-top">
             <div class="wrapper wrapper-content animated fadeInRight">
@@ -72,16 +74,44 @@
         <div class=" text-white row d-inline-block align-text-top">
             <div class="col-6">
 
-                <div class="mt-2" id="video" style="width: 420px; height:315px; background:rgba(0, 0, 0, 0.5);  ">
+                <div class="mt-2" id="video" style="width: 420px; min-height:315px;padding:3%; background:rgba(0, 0, 0, 0.5);  ">
                     <p class="text-white">The movie/video will be displayed here</p>
-                    <video width="400" controls>
-                        <source src="~/movies/mov_bbb.mp4" type="video/mp4">
+                    <video width="400" id="displayvid" controls>
                     </video>
+
+                    <div class="d-block" style="padding-bottom:2%">
+                        <input style="border-radius:10px" id="time" type="number" />
+                        <button id="changeTime" class="btn btn-outline-success my-2 my-sm-0">Change Time For Every One</button>
+                    </div>
+
+                    <button id="pausePlay" class="btn btn-outline-success my-2 my-sm-0" onclick="playPause()">Play/Pause</button>
+
+
                 </div>
             </div>
         </div>
+        <ul id="library" class="position-fixed align-text-top" style="background :rgba(0, 0, 0, 0.5);min-width:8%;min-height:100%;top:0;right:0  ">
+            <p class="text-white">Movies</p>
+            @foreach (var el in Model.Movies)
+            {
+                <li onclick="loadVideo('@el.Path')" class="text-white" style="cursor: pointer;">@el.Name</li>
+            }
+        </ul>
     </div>
+
 </div>
+<script>
+
+    function appearLibrary() {
+        var el = document.getElementById('library');
+        if (el.style.display == "none")
+            el.style.display = "inline-block";
+        else
+            el.style.display = "none";
+
+    }
+</script>
+
 <style>
 
 

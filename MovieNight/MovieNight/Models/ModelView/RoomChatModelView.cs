@@ -9,5 +9,6 @@ namespace MovieNight.Models.ModelView
     {
         public string Id { get; set; }
         public List<string> Users { get; set; }
+        public List<Movie> Movies { get; set; }
     }
 }

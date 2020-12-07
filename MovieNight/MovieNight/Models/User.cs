@@ -9,6 +9,6 @@ namespace MovieNight.Models
     public class User : IdentityUser
     {
         public List<UserChatRooms> UserChatRooms { get; set; }
-
+        public string Role { get; set; } = "User";
     }
 }

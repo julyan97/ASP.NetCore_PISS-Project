@@ -25,32 +25,37 @@ namespace MovieNight.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(string id)
+        public IActionResult Index(string search)
         {
             /// 1
             var model = new IndexViewModel();
-            if(id == null)
+
+            var list = db.ChatRooms.Where(x => (x.Id.Contains(search) || x.Owner.Contains(search)) || (search == null)).ToList();
+            model.ChatRooms = list;
+            try
             {
-                var list = db.ChatRooms.ToList();
-                model.ChatRooms = list;
+                model.UserRole = db.Users.FirstOrDefault(x => x.UserName == HttpContext.User.Identity.Name).Role;
             }
-            else
+            catch
             {
-                var list = db.ChatRooms.Where(x => x.Owner == id).ToList();
-                model.ChatRooms = list;
+                model.UserRole = "user";
             }
-            
             /// 2
-           // ViewBag.list = list;
+            // ViewBag.list = list;
             /// 3
-           // ViewData["list"] = list;
-
-            
-
+            // ViewData["list"] = list;
 
             return View(model);
         }
 
+        [HttpPost]
+        public IActionResult AddMovie(string movieUrl, string movieName)
+        {
+            db.Movies.Add(new Movie() { Name = movieName, Path = movieUrl });
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
 
 
         public IActionResult Privacy()
@@ -88,6 +93,10 @@ namespace MovieNight.Controllers
                 RoomChatModelView model = new RoomChatModelView();
                 model.Id = id;
                 model.Users = users;
+
+                var movies = db.Movies.ToList();
+                model.Movies = movies;
+
                 return View(model);
             }
             catch

@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-  
+
 }
 @using MovieNight.Models.ModelView;
 
@@ -8,13 +8,16 @@
 
 <div class="container">
 
-   
     <div class="text-center text-md-center" style="margin-top:10%">
+        @if (Model.UserRole == "admin")
+        {
         <button type="button" onclick="appearButtons()" class=" btn-secondary btn-lg" style="margin: 2.5%; background:#0db1fa; border: none; min-width: 30%; min-height: 3.5em; font-size: 30px; border-radius: 30px">Contribute to Library</button>
-        <form id="uploadMovies" class="text-center" style="display:none">
-            <button type="button" class="btn-lg btn-primary" style="background-color:#0db1fc; border:none; min-width:10%; min-height:2.0em; font-size:20px; border-radius:20px;" >Upload</button>
-            <button type="button" class="btn-lg btn-primary" style="background-color:#0db1fc; border:none; min-width:10%; min-height:2.0em; font-size:20px; border-radius:20px;" >Submit</button>
+        <form id="uploadMovies" class="text-center" style="display:none" asp-action="AddMovie" asp-controller="Home" method="post">
+            <input name="movieUrl" type="text" placeholder="movieUrl"/>
+            <input name="movieName" type="text" placeholder="movie name"/>
+            <button type="submit" class="btn-lg btn-primary" style="background-color:#0db1fc; border:none; min-width:10%; min-height:2.0em; font-size:20px; border-radius:20px;" >Add to Library</button>
         </form>
+        }
         <form asp-controller="Home" asp-action="CreateRoom" method="post" class="text-center">
             <button type="submit" class=" btn-lg btn-primary" style="margin:2.5%; background:#59b723 ;border:none ; min-width:30%;min-height:3.5em;font-size:30px;border-radius:30px">Create Lobby</button>
             <button type="button" onclick="appearLobbies()" class=" btn-secondary btn-lg" style="margin: 2.5%; border: none; min-width: 30%; min-height: 3.5em; font-size: 30px; border-radius: 30px">Join Lobby</button>

@@ -18,6 +18,27 @@ namespace MovieNight.ChatHub
 
         }
 
+        public async Task PlayPause(string room)
+        {
+
+            await Clients.Groups(room).SendAsync("PlayPauseJs");
+
+        }
+        public async Task LoadVideo(string room,string name)
+        {
+
+            await Clients.Groups(room).SendAsync("LoadVideoJs",name);
+
+        }
+
+        public async Task ChangeTime(string room, string time)
+        {
+
+            await Clients.Groups(room).SendAsync("ChangeTimeJs", time);
+
+        }
+
+
         public async Task SendMessage(string room , string message)
         {
             
