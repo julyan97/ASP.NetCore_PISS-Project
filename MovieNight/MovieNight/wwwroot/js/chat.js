@@ -58,20 +58,13 @@ src="${message.text}">
 });
 
 connection.start().then(function () {
+
     document.getElementById("sendButton").disabled = false;
     document.getElementById("videob").disabled = false;
-
-
-
-
-
 
     connection.invoke("AddToGroup", room).catch(function (err) {
         return console.error(err.toString());
     });
-
-
-
 }).catch(function (err) {
     return console.error(err.toString());
 });
@@ -80,8 +73,6 @@ connection.start().then(function () {
 
 document.getElementById("sendButton").addEventListener("click", function (event) {
 
-
-
     var message = document.getElementById("messageInput").value;
     connection.invoke("SendMessageToGroup", room, message).catch(function (err) {
         return console.error(err.toString());
@@ -89,16 +80,12 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     event.preventDefault();
 
     document.getElementById("messageInput").value = "";
-
-
 });
 
 
 //------------------------------------------------------- VIDEO
 
 document.getElementById("videob").addEventListener("click", function (event) {
-
-
 
     var message = document.getElementById("videom").value;
     connection.invoke("SendVideoInfiToAllMessage", room, message).catch(function (err) {
@@ -160,8 +147,9 @@ connection.on("LoadVideoJs", function (name) {
 //------------------------------------------------------------------------SetTime
 document.getElementById("changeTime").addEventListener("click", function (event) {
 
-    var time = document.getElementById("time").value;
-
+    //var time = document.getElementById("time").value;
+    var time = document.getElementById('displayvid').currentTime;
+    console.log(time);
     connection.invoke("ChangeTime", room, time).catch(function (err) {
         return console.error(err.toString());
     });
@@ -170,9 +158,28 @@ document.getElementById("changeTime").addEventListener("click", function (event)
 
 
 connection.on("ChangeTimeJs", function (time) {
-    
+
+   
     var vid = document.getElementById('displayvid');
     var oldsrc = vid.getAttribute("src").split("#t=")[0];
     var newsrc = oldsrc + `#t=${time}`;
     vid.setAttribute("src", newsrc);
 });
+
+
+//-------------------------------------------------------------------------onSeeking (change video time by itself)
+//document.getElementById("displayvid").addEventListener("seeking", function myFunction() {
+
+//    // Display the current position of the video in a p element with id="demo"
+//   // document.getElementById("demo").innerHTML = vid.currentTime;
+//    var vid = document.getElementById('displayvid');
+//    var time = vid.currentTime;
+//    console.log(time);
+//    connection.invoke("ChangeTime", room, time).catch(function (err) {
+//        return console.error(err.toString());
+//    });
+
+//});
+
+// Attach a seeking event to the video element, and execute a function if a seek operation begins
+

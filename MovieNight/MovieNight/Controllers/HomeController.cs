@@ -140,10 +140,12 @@ namespace MovieNight.Controllers
         [HttpGet]
         public IActionResult DeleteRoom(string id)
         {
+            
             var room = db.ChatRooms.Include(x => x.UserChatRooms)
                                     .ThenInclude(x => x.User)
                                     .FirstOrDefault(x => x.Id == id);
-
+            
+            if (HttpContext.User.Identity.Name != room.Owner) return RedirectToAction("Index");
             db.ChatRooms.Remove(room);
             db.SaveChanges();
 

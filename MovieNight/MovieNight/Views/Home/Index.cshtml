@@ -4,19 +4,19 @@
 }
 @using MovieNight.Models.ModelView;
 
-@model IndexViewModel 
+@model IndexViewModel
 
 <div class="container">
 
     <div class="text-center text-md-center" style="margin-top:10%">
         @if (Model.UserRole == "admin")
         {
-        <button type="button" onclick="appearButtons()" class=" btn-secondary btn-lg" style="margin: 2.5%; background:#0db1fa; border: none; min-width: 30%; min-height: 3.5em; font-size: 30px; border-radius: 30px">Contribute to Library</button>
-        <form id="uploadMovies" class="text-center" style="display:none" asp-action="AddMovie" asp-controller="Home" method="post">
-            <input name="movieUrl" type="text" placeholder="movieUrl"/>
-            <input name="movieName" type="text" placeholder="movie name"/>
-            <button type="submit" class="btn-lg btn-primary" style="background-color:#0db1fc; border:none; min-width:10%; min-height:2.0em; font-size:20px; border-radius:20px;" >Add to Library</button>
-        </form>
+            <button type="button" onclick="appearButtons()" class=" btn-secondary btn-lg" style="margin: 2.5%; background:#0db1fa; border: none; min-width: 30%; min-height: 3.5em; font-size: 30px; border-radius: 30px">Contribute to Library</button>
+            <form id="uploadMovies" class="text-center" style="display:none" asp-action="AddMovie" asp-controller="Home" method="post">
+                <input name="movieUrl" type="text" placeholder="movieUrl" />
+                <input name="movieName" type="text" placeholder="movie name" />
+                <button type="submit" class="btn-lg btn-primary" style="background-color:#0db1fc; border:none; min-width:10%; min-height:2.0em; font-size:20px; border-radius:20px;">Add to Library</button>
+            </form>
         }
         <form asp-controller="Home" asp-action="CreateRoom" method="post" class="text-center">
             <button type="submit" class=" btn-lg btn-primary" style="margin:2.5%; background:#59b723 ;border:none ; min-width:30%;min-height:3.5em;font-size:30px;border-radius:30px">Create Lobby</button>
@@ -58,27 +58,26 @@
 
     function appearButtons() {
         var el = document.getElementById('uploadMovies')
-        if (el.style.display == "none")
-        {
+        if (el.style.display == "none") {
             el.style.display = "block";
         }
 
         else
             el.style.display = "none"
     }
-    
+
     function appearLobbies() {
         var el = document.getElementById('lobbies');
         if (el.style.display == "none")
             el.style.display = "block";
-        else 
+        else
             el.style.display = "none";
 
     }
 
     function apii() {
         var ul = document.getElementById("dblist");
-        ul.innerHTML =''
+        ul.innerHTML = ''
         fetch("api/all", {
             method: "Get"
         }).then(x => x.json())
@@ -89,7 +88,7 @@
                     li.style = "color:white";
                     ul.appendChild(li);
                 }
-            
+
             })
     }
 </script>

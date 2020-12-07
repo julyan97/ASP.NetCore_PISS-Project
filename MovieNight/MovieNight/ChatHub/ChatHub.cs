@@ -31,7 +31,7 @@ namespace MovieNight.ChatHub
 
         }
 
-        public async Task ChangeTime(string room, string time)
+        public async Task ChangeTime(string room, double time)
         {
 
             await Clients.Groups(room).SendAsync("ChangeTimeJs", time);
