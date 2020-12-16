@@ -51,7 +51,7 @@ connection.on("ReceiveMessage", function (message) {
     else {
         var li = "HI"
 
-        document.getElementById("video").innerHTML = `<iframe width="420" height="315"
+        document.getElementById("generate").innerHTML = `<iframe width="420" height="315"
 src="${message.text}">
 </iframe>`
     }

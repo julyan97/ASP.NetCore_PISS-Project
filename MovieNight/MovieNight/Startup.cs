@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MovieNight.Models;
+using ElectronNET.API;
 
 namespace MovieNight
 {
@@ -36,6 +37,8 @@ namespace MovieNight
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddSignalR();
+
+            Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,5 +72,6 @@ namespace MovieNight
                 endpoints.MapHub<MovieNight.ChatHub.ChatHub>("/chathub");
             });
         }
+
     }
 }
