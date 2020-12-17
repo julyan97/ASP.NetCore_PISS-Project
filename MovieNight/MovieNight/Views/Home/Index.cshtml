@@ -9,7 +9,7 @@
 <div class="container">
 
     <div class="text-center text-md-center" style="margin-top:10%">
-        @if (Model.UserRole == "admin")
+        @if (Model.UserRole == "Admin")
         {
             <button type="button" onclick="appearButtons()" class=" btn-secondary btn-lg" style="margin: 2.5%; background:#0db1fa; border: none; min-width: 30%; min-height: 3.5em; font-size: 30px; border-radius: 30px">Contribute to Library</button>
             <form id="uploadMovies" class="text-center" style="display:none" asp-action="AddMovie" asp-controller="Home" method="post">
