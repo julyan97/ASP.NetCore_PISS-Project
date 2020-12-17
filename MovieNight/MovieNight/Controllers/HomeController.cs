@@ -9,9 +9,11 @@ using MovieNight.Data;
 using MovieNight.Models;
 using MovieNight.Models.ModelView;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MovieNight.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -24,6 +26,7 @@ namespace MovieNight.Controllers
             _logger = logger;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Index(string search)
         {
@@ -113,6 +116,7 @@ namespace MovieNight.Controllers
             return RedirectToAction("RoomChat", new { Id = Id });
         }
 
+        
         [HttpPost]
         public IActionResult CreateRoom()
         {
