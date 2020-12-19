@@ -33,7 +33,7 @@
                 <p class="text-white">Name:<br> @c.Owner</p>
                 <form action="Home/JoinRoom/@c.Id" method="get">
                     <div>
-                        @if (User.Identity.Name == c.Owner)
+                        @if (User.Identity.Name == c.Owner || Model.UserRole == "Admin")
                         {
                             <button formaction="Home/DeleteRoom/@c.Id" type="submit" name="Id" class="text-white d-inline" style="border-radius:5px; background:red; border:none; min-width:25%;margin-bottom:10px;margin-right:5%">DeleteRoom</button>
 
