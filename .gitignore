@@ -444,3 +444,4 @@ $RECYCLE.BIN/
 /MovieNight/.vs
 .vs
 /MovieNight/MovieNight/obj
+/MovieNight/.gitignore
