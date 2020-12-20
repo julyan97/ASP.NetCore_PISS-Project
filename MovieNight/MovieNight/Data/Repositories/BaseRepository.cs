@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace MovieNight.Repositories
 {
-    public class BaseRepository<SetType> : IBaseRepository<SetType> where SetType : class
+    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
         private readonly ApplicationDbContext db;
 
@@ -12,17 +12,17 @@ namespace MovieNight.Repositories
             this.db = db;
         }
 
-        public  void Add(SetType entity)
+        public  void Add(TEntity entity)
         {
-             db.Add<SetType>(entity);
+             db.Add<TEntity>(entity);
              db.SaveChanges();
 
         }
 
 
-        public void Remove(SetType entity)
+        public void Remove(TEntity entity)
         {
-            db.Remove<SetType>(entity);
+            db.Remove<TEntity>(entity);
             db.SaveChanges();
         }
 

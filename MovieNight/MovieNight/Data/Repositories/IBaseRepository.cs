@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 namespace MovieNight.Repositories
 {
 
-    public interface IBaseRepository<SetType>
+    public interface IBaseRepository<TEntity>
     {
-        void Add(SetType entity);
-        void Remove(SetType entity);
+        void Add(TEntity entity);
+        void Remove(TEntity entity);
 
 
     }
