@@ -10,11 +10,9 @@ namespace MovieNight.Repositories
 {
     public class RoomService : BaseService<ChatRoom>, IRoomService
     {
-        private readonly ApplicationDbContext db;
-
-        public RoomService(ApplicationDbContext db) : base(db)
+        public RoomService(ApplicationDbContext db) 
         {
-            this.db = db;
+            this.Db = db;
         }
 
         public void AddUserToRoom(User user, ChatRoom room)
@@ -26,13 +24,13 @@ namespace MovieNight.Repositories
             //---
 
             room.UserChatRooms.Add(mapper);
-            db.SaveChanges();
+            Db.SaveChanges();
         }
 
         public List<ChatRoom> FindAllRoomsWhere(Expression<Func<ChatRoom, bool>> predicate)
         {
 
-            var list = db.ChatRooms
+            var list = Db.ChatRooms
                 .Include(x => x.UserChatRooms)
                 .ThenInclude(x => x.User)
                 .Where(predicate)
@@ -43,7 +41,7 @@ namespace MovieNight.Repositories
 
         public ChatRoom FindRoomById(string id)
         {
-            var room = db.ChatRooms.Include(x => x.UserChatRooms)
+            var room = Db.ChatRooms.Include(x => x.UserChatRooms)
                     .ThenInclude(x => x.User)
                     .FirstOrDefault(x => x.Id == id);
 
@@ -59,7 +57,7 @@ namespace MovieNight.Repositories
 
         public void RemoveRoomById(string id)
         {
-            var room = db.ChatRooms.FirstOrDefault(x => x.Id == id);
+            var room = Db.ChatRooms.FirstOrDefault(x => x.Id == id);
             Remove(room);
         }
     }

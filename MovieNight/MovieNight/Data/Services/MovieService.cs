@@ -6,16 +6,14 @@ namespace MovieNight.Repositories
 {
     public class MovieService : BaseService<Movie>, IMovieService
     {
-        private readonly ApplicationDbContext db;
-
-        public MovieService(ApplicationDbContext db) : base(db)
+        public MovieService(ApplicationDbContext db) 
         {
-            this.db = db;
+            this.Db = db;
         }
 
         public void RemoveByName(string name)
         {
-            var movie = db.Movies.FirstOrDefault(x => x.Name == name);
+            var movie = Db.Movies.FirstOrDefault(x => x.Name == name);
             Remove(movie);
         }
     }

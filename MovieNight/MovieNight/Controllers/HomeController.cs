@@ -20,19 +20,19 @@ namespace MovieNight.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext db;
-        private readonly MovieService movieRepository;
-        private readonly RoomService roomRepository;
+        private readonly MovieService movieService;
+        private readonly RoomService roomService;
         private readonly UserManager<User> userManager;
 
         public HomeController(ILogger<HomeController> logger
             , ApplicationDbContext db
-            , MovieService movieRepository
-            , RoomService roomRepository
+            , MovieService movieService
+            , RoomService roomService
             , UserManager<User> userManager)
         {
             this.db = db;
-            this.movieRepository = movieRepository;
-            this.roomRepository = roomRepository;
+            this.movieService = movieService;
+            this.roomService = roomService;
             this.userManager = userManager;
             _logger = logger;
             this.db = db;
@@ -43,7 +43,7 @@ namespace MovieNight.Controllers
         public IActionResult Index(string search)
         {
 
-            var list = roomRepository.FindAllRoomsWhere(x => (x.Id.Contains(search) || x.Owner.Contains(search)) || (search == null));
+            var list = roomService.FindAllRoomsWhere(x => (x.Id.Contains(search) || x.Owner.Contains(search)) || (search == null));
             var model = new IndexViewModel() { ChatRooms = list };
             try
             {
@@ -60,14 +60,14 @@ namespace MovieNight.Controllers
         [HttpPost]
         public IActionResult AddMovie(string movieUrl, string movieName)
         {
-            movieRepository.Add(new Movie() { Name = movieName, Path = movieUrl });
+            movieService.Add(new Movie() { Name = movieName, Path = movieUrl });
             return RedirectToAction("Index");
         }
 
         [HttpPost]
         public IActionResult DeleteMovie(string movieName)
         {
-            movieRepository.RemoveByName(movieName);
+            movieService.RemoveByName(movieName);
             return RedirectToAction("Index");
         }
 
@@ -82,14 +82,14 @@ namespace MovieNight.Controllers
         {
             try
             {
-                var room = roomRepository.FindRoomById(id);
+                var room = roomService.FindRoomById(id);
 
                 if (!room.UserChatRooms.Any(x => x.User.UserName == User.Identity.Name))
                 {
                     var user = db.Users.FirstOrDefault(x => x.UserName == User.Identity.Name);
-                    roomRepository.AddUserToRoom(user, room);
+                    roomService.AddUserToRoom(user, room);
                 }
-                var users = roomRepository.GetAllUserNamesInRoomById(id);
+                var users = roomService.GetAllUserNamesInRoomById(id);
 
                 RoomChatModelView model = new RoomChatModelView() { Id = id, Users = users, Movies = db.Movies.ToList() };
                 return View(model);
@@ -129,9 +129,9 @@ namespace MovieNight.Controllers
         [HttpGet]
         public IActionResult DeleteRoom(string id)
         {
-            var room = roomRepository.FindRoomById(id);
+            var room = roomService.FindRoomById(id);
             if (HttpContext.User.Identity.Name != room.Owner) return RedirectToAction("Index");
-            roomRepository.Remove(room);
+            roomService.Remove(room);
             return RedirectToAction("Index");
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

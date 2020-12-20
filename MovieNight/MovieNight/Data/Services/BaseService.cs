@@ -5,25 +5,32 @@ namespace MovieNight.Repositories
 {
     public class BaseService<TEntity> : IBaseService<TEntity> where TEntity : class
     {
-        private readonly ApplicationDbContext db;
+        private ApplicationDbContext db;
 
-        public BaseService(ApplicationDbContext db)
+        public ApplicationDbContext Db 
         {
-            this.db = db;
+            set
+            {
+                db = value;
+            }
+            get
+            {
+                return db;
+            }
         }
 
         public  void Add(TEntity entity)
         {
-             db.Add<TEntity>(entity);
-             db.SaveChanges();
+             Db.Add<TEntity>(entity);
+             Db.SaveChanges();
 
         }
 
 
         public void Remove(TEntity entity)
         {
-            db.Remove<TEntity>(entity);
-            db.SaveChanges();
+            Db.Remove<TEntity>(entity);
+            Db.SaveChanges();
         }
 
     }
