@@ -26,7 +26,6 @@ namespace MovieNight.Repositories
 
         }
 
-
         public void Remove(TEntity entity)
         {
             Db.Remove<TEntity>(entity);

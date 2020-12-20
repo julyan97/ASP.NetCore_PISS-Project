@@ -35,19 +35,19 @@ namespace MovieNight.Controllers
             this.roomService = roomService;
             this.userManager = userManager;
             _logger = logger;
-            this.db = db;
         }
 
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult Index(string search)
+        public async Task<IActionResult> Index(string search)
         {
 
             var list = roomService.FindAllRoomsWhere(x => (x.Id.Contains(search) || x.Owner.Contains(search)) || (search == null));
             var model = new IndexViewModel() { ChatRooms = list };
             try
             {
-                model.UserRole = db.Users.FirstOrDefault(x => x.UserName == HttpContext.User.Identity.Name).Role;
+                var user = await userManager.FindByNameAsync(User.Identity.Name);
+                model.UserRole = user.Role;
             }
             catch
             {
@@ -78,7 +78,7 @@ namespace MovieNight.Controllers
         }
 
         [HttpGet("Home/roomchat/{id}")]
-        public IActionResult RoomChat(string id)
+        public async Task<IActionResult> RoomChat(string id)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace MovieNight.Controllers
 
                 if (!room.UserChatRooms.Any(x => x.User.UserName == User.Identity.Name))
                 {
-                    var user = db.Users.FirstOrDefault(x => x.UserName == User.Identity.Name);
+                    var user = await userManager.FindByNameAsync(User.Identity.Name);
                     roomService.AddUserToRoom(user, room);
                 }
                 var users = roomService.GetAllUserNamesInRoomById(id);
@@ -134,6 +134,7 @@ namespace MovieNight.Controllers
             roomService.Remove(room);
             return RedirectToAction("Index");
         }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
