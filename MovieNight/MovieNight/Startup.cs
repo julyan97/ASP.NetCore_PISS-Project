@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MovieNight.Models;
 using ElectronNET.API;
+using MovieNight.Repositories;
 
 namespace MovieNight
 {
@@ -45,6 +46,13 @@ namespace MovieNight
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddSignalR();
+
+            //------------------------------------------dependencies
+
+            services.AddTransient<RoomRepository>();
+            services.AddTransient<MovieRepository>();
+
+            //------------------------------------------------------
 
             Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
         }

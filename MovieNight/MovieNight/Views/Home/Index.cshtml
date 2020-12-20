@@ -12,11 +12,17 @@
         @if (Model.UserRole == "Admin")
         {
             <button type="button" onclick="appearButtons()" class=" btn-secondary btn-lg" style="margin: 2.5%; background:#0db1fa; border: none; min-width: 30%; min-height: 3.5em; font-size: 30px; border-radius: 30px">Contribute to Library</button>
-            <form id="uploadMovies" class="text-center" style="display:none" asp-action="AddMovie" asp-controller="Home" method="post">
+            <form class="uploadMovies text-center" style="display:none" asp-action="AddMovie" asp-controller="Home" method="post">
                 <input name="movieUrl" type="text" placeholder="movieUrl" />
                 <input name="movieName" type="text" placeholder="movie name" />
                 <button type="submit" class="btn-lg btn-primary" style="background-color:#0db1fc; border:none; min-width:10%; min-height:2.0em; font-size:20px; border-radius:20px;">Add to Library</button>
             </form>
+            <form class="uploadMovies text-center" style="display:none;margin-top:10px;" asp-action="DeleteMovie" asp-controller="Home" method="post">
+                <input name="movieName" type="text" placeholder="movie name" />
+                <button type="submit" class="btn-lg btn-primary" style="background-color:#0db1fc; border:none; min-width:10%; min-height:2.0em; font-size:20px; border-radius:20px;">Remove Movie</button>
+            </form>
+
+
         }
         <form asp-controller="Home" asp-action="CreateRoom" method="post" class="text-center">
             <button type="submit" class=" btn-lg btn-primary" style="margin:2.5%; background:#59b723 ;border:none ; min-width:30%;min-height:3.5em;font-size:30px;border-radius:30px">Create Lobby</button>
@@ -57,13 +63,16 @@
 <script>
 
     function appearButtons() {
-        var el = document.getElementById('uploadMovies')
-        if (el.style.display == "none") {
-            el.style.display = "block";
-        }
+        var el = document.getElementsByClassName('uploadMovies')
+        for (var i = 0; i < el.length; i++) {
+            if (el[i].style.display == "none") {
+                el[i].style.display = "block";
+            }
 
-        else
-            el.style.display = "none"
+            else
+                el[i].style.display = "none"
+        }
+       
     }
 
     function appearLobbies() {
