@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace MovieNight.Repositories
 {
-    public class MovieRepository : BaseRepository<Movie>, IMovieRepository
+    public class MovieService : BaseService<Movie>, IMovieService
     {
         private readonly ApplicationDbContext db;
 
-        public MovieRepository(ApplicationDbContext db) : base(db)
+        public MovieService(ApplicationDbContext db) : base(db)
         {
             this.db = db;
         }

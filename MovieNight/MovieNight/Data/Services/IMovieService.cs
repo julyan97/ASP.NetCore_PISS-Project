@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MovieNight.Repositories
 {
-    public interface IMovieRepository
+    public interface IMovieService
     {
         void RemoveByName(string name);
     }

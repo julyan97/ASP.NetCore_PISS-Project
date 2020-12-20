@@ -49,8 +49,8 @@ namespace MovieNight
 
             //------------------------------------------dependencies
 
-            services.AddTransient<RoomRepository>();
-            services.AddTransient<MovieRepository>();
+            services.AddTransient<RoomService>();
+            services.AddTransient<MovieService>();
 
             //------------------------------------------------------
 

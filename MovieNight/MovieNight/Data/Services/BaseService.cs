@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 
 namespace MovieNight.Repositories
 {
-    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
+    public class BaseService<TEntity> : IBaseService<TEntity> where TEntity : class
     {
         private readonly ApplicationDbContext db;
 
-        public BaseRepository(ApplicationDbContext db)
+        public BaseService(ApplicationDbContext db)
         {
             this.db = db;
         }

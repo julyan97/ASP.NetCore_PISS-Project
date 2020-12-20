@@ -20,14 +20,14 @@ namespace MovieNight.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext db;
-        private readonly MovieRepository movieRepository;
-        private readonly RoomRepository roomRepository;
+        private readonly MovieService movieRepository;
+        private readonly RoomService roomRepository;
         private readonly UserManager<User> userManager;
 
         public HomeController(ILogger<HomeController> logger
             , ApplicationDbContext db
-            , MovieRepository movieRepository
-            , RoomRepository roomRepository
+            , MovieService movieRepository
+            , RoomService roomRepository
             , UserManager<User> userManager)
         {
             this.db = db;

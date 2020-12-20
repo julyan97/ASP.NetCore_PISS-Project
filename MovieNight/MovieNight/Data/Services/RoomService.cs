@@ -8,11 +8,11 @@ using System.Linq.Expressions;
 
 namespace MovieNight.Repositories
 {
-    public class RoomRepository : BaseRepository<ChatRoom>, IRoomRepository
+    public class RoomService : BaseService<ChatRoom>, IRoomService
     {
         private readonly ApplicationDbContext db;
 
-        public RoomRepository(ApplicationDbContext db) : base(db)
+        public RoomService(ApplicationDbContext db) : base(db)
         {
             this.db = db;
         }

@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace MovieNight.Repositories
 {
-    public interface IRoomRepository
+    public interface IRoomService
     {
         ChatRoom FindRoomById(string id);
         List<ChatRoom> FindAllRoomsWhere(Expression<Func<ChatRoom, bool>> preicate);
